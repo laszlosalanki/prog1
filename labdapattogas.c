@@ -11,12 +11,12 @@ int main(void)
     int y = 0;
     int xact = 1;
     int yact = 1;
-    int mx;
-    int my;
+    int dbx;
+    int dby;
 
     for(;;)
     {
-	getmaxyx(w, my, mx);
+	getmaxyx(w, dby, dbx);
 
 	mvprintw(y, x, "o");
 
@@ -28,13 +28,13 @@ int main(void)
 	x = x + xact;
 	y = y + yact;
 
-	if (x >= mx-1)
+	if (x >= dbx-1)
 	    xact *= -1;
 	if (x <= 0)
 	    xact *= -1;
 	if (y <= 0)
 	    yact *= -1;
-	if (y >= my-1)
+	if (y >= dby-1)
 	    yact *= -1;
     }
     return 0;
