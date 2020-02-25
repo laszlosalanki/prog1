@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
-void kiir(double tomb[], int db) {
+void kiir(double tomb[], int db) { // a tömb elemeinek kiiratása (nagyobb tömb esetén sem kell módosítani)
 	/*for (int i = 0; i < db; i++)
 		printf("%f\n", tomb[i]);*/
   /*VAGY AKÁR*/
-  int ki = -1;
+  int ki = -1; //azért -1-ről indul, mert a tömb 0. elemét is ki kell iratni
   while (ki < db-1) {
     ki++;
     printf("%f\n", tomb[ki]);
@@ -15,7 +15,7 @@ void kiir(double tomb[], int db) {
 
 double tavolsag(double PR[], double PRv[], int n)
 {
-  double osszeg = 0;
+  double osszeg = 0; //innen csak az osszeg változó definiálása hiányzott
   for (int i = 0; i < n; i++)
     osszeg += (PRv[i] - PR[i]) * (PRv[i] - PR[i]);
   return sqrt(osszeg);
@@ -42,16 +42,16 @@ int main()
 			PR[i] = 0.0;
 			for (j = 0; j < 4; j++)
 
-				PR[i] += (L[i][j] * PRv[j]);
+				PR[i] += (L[i][j] * PRv[j]); //végigjárjuk a PR[] tömböt és feltöltjük a szimulációs 2D L[][] tömb szerint
 		}
 		if (tavolsag(PR, PRv, 4) < 0.00000001)
 			break;
 
-		for (i = 0; i < 4; i++)
-			PRv[i] = PR[i];
+		for (i = 0; i < 4; i++) //ha a tavolsag() függvény 0.00000001-nél is kisebb számmal tér vissza, akkor
+			PRv[i] = PR[i];      //a PRv[] tömb elemeit lecseréljük a PR[] elemeire
 	}
 
 	kiir(PR, 4);
-  
+
   return 0;
 }
