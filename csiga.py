@@ -95,7 +95,7 @@ class Steve:
             for i in range(2):
                 for i in range(secf):
                     self.agent_host.sendCommand( "jumpmove 1" )
-                    time.sleep(0.5)
+                    time.sleep(0.15)
                 self.agent_host.sendCommand( "turn -1" )
                 time.sleep(.5)
             secf = secf+1
